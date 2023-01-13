@@ -8,17 +8,6 @@ lsp.ensure_installed({
 	'rust_analyzer'
 })
 
---require('cmp').setup {
---	sources = {
---		{ name = 'nvim-lua' }
---	}
---}
--- local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
---lsp.set_preferences({
---	sign_icons = { }
---})
-
 lsp.configure('sumneko_lua', {
 	settings = {
 		Lua = {
@@ -28,5 +17,21 @@ lsp.configure('sumneko_lua', {
 		}
 	}
 })
+
+lsp.configure('tsserver', {
+    settings = {
+        completions = {
+            completeFunctionCalls = true
+        },
+        typescript = {
+            inlayHints = {
+                includeInlayFunctionParameterTypeHints = true
+            }
+        }
+    }
+})
+
+vim.keymap.set("n", "<leader>fa", vim.cmd.EslintFixAll)
+vim.keymap.set("n", "gc", vim.cmd.cclose)
 
 lsp.setup()
