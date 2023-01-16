@@ -60,4 +60,15 @@ return require('packer').startup(function(use)
         'rmagatti/session-lens',
         requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
     }
-end)
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+    use {
+        'prettier/vim-prettier',
+        run = 'yarn install --frozen-lockfile --production',
+        ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'} }
+    end)
